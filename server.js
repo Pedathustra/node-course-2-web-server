@@ -2,6 +2,8 @@
 const express = require('express');
 const hbs =require('hbs');
 const fs=require('fs'); // to log a file
+const port  = process.env.PORT || 3000;
+
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -98,6 +100,6 @@ app.get('/bad', (req,res)=>{
 
 //this is the port to listen for such requests. 3000 is a common dev port.
 //optional second argument takes a function that tells it to do something once server is up.
-app.listen (3000, ()=>{
-    console.log('Server up on port 3000!')
+app.listen (port, ()=>{ //  use environment variable (port) so heroku can dynamically handle deploy
+    console.log(`Server up on port ${port}!`)
 });
