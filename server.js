@@ -30,6 +30,9 @@ app.use((req,res,next)=>{
     next(); //need next to include this otherwise won't
     }
 );
+/*
+uncomment to put in maintenance mode
+
 // here's an example where you never call next...say you're in maintenance mode.
 app.use((req,res,next)=>{
         res.render('maintenance.hbs',{
@@ -39,7 +42,7 @@ app.use((req,res,next)=>{
         }); //to render
     }
 );
-
+*/
 //this is  built-in express middleware
 //takes absolute path to folder __dirname variable that gets passed into our function by that wrapper function
 app.use(express.static(__dirname + '/public'));
@@ -83,6 +86,16 @@ app.get('/about',(req,res)=>{
         }); //to render
     }
 );
+
+
+app.get('/projects',(req,res)=>{
+        res.render('projects.hbs',{
+            pageTitle: 'Projects Page',
+            projectsMessage: 'I have a new project idea! '
+        }); //to render
+    }
+);
+
 /*
 app.get('/about',(req,res)=>{
     res.send('About Page');
